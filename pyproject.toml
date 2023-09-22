@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "geocoder-api"
+version = "0.0.1"
+description = "API for geocoding and reverse-geocoding"
+authors = ["Erik Dymbe <erik.dymbe@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+pydantic = "^2.3.0"
+pydantic-settings = "^2.0.3"
+httpx = "^0.25.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+pytest = "^7.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
