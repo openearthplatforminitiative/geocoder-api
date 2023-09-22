@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from geocoder_api.settings import Settings
-from geocoder_api.routers import geocoding
+from geocoder_api.routers import geocoding, healthcheck
 
 settings = Settings()
 app = FastAPI(title="Geocoder API", version=settings.version)
 
 app.include_router(geocoding.router)
+app.include_router(healthcheck.router)
 
 
 if __name__ == "__main__":
