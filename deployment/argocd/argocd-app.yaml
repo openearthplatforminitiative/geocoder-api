@@ -16,7 +16,7 @@ spec:
     server: https://kubernetes.default.svc
   project: apps
   source:
-    path: argocd/deployment/
+    path: deployment/kubernetes/
     repoURL: https://github.com/openearthplatforminitiative/geocoder-api
     targetRevision: HEAD
   syncPolicy:

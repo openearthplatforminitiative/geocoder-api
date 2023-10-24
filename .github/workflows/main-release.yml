@@ -2,6 +2,8 @@ name: Main Release
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'deployment/**'
 
 env:
   REGISTRY: ghcr.io
