@@ -29,3 +29,24 @@ spec:
     targetPort: 8080
   selector:
     app: geocoder-api
+---
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: geocoder-api
+spec:
+  http:
+    - name: geocoder-api
+      match:
+        paths:
+          - /geocode/*
+      backends:
+        - serviceName: geocoder-api
+          servicePort: 80
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - "^/geocode/(.*)"
+              - "/$1"
