@@ -9,3 +9,6 @@ class Settings(BaseSettings):
     uvicorn_proxy_headers: bool = False
     photon_url: str = "https://photon.komoot.io"
     api_root_path: str = "/"
+
+
+settings = Settings()
