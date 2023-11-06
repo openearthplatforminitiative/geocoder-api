@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Query
 from fastapi_cache.decorator import cache
 from typing_extensions import Annotated
-from geocoder_api.settings import Settings
+from geocoder_api.settings import settings
 from httpx import AsyncClient
 from geojson_pydantic import FeatureCollection
 
-settings = Settings()
+
 router = APIRouter(tags=["geocoding"])
 
 

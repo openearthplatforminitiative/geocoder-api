@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
-from geocoder_api.settings import Settings
+from geocoder_api.settings import settings
 from geocoder_api.routers import geocoding, healthcheck
 
 
@@ -13,7 +13,6 @@ async def lifespan(_: FastAPI):
     yield
 
 
-settings = Settings()
 app = FastAPI(
     title="Geocoder API",
     lifespan=lifespan,
