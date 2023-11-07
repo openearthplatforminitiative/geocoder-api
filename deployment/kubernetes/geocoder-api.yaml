@@ -14,7 +14,7 @@ spec:
         app: geocoder-api
     spec:
       containers:
-        - image: ghcr.io/openearthplatforminitiative/geocoder-api:0.1.2
+        - image: ghcr.io/openearthplatforminitiative/geocoder-api:0.2.0
           name: geocoder-api
           ports:
             - containerPort: 8080
@@ -22,7 +22,7 @@ spec:
             - name: API_ROOT_PATH
               value: "/geocoding"
             - name: VERSION
-              value: "0.1.2"
+              value: "0.2.0"
 ---
 apiVersion: v1
 kind: Service
