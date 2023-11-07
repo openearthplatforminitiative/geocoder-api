@@ -3,7 +3,7 @@ from fastapi_cache.decorator import cache
 from typing_extensions import Annotated
 from geocoder_api.settings import settings
 from httpx import AsyncClient
-from geojson_pydantic import FeatureCollection
+from geocoder_api.models.photon import FeatureCollection
 
 
 router = APIRouter(tags=["geocoding"])

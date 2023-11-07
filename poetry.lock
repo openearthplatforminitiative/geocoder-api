@@ -471,25 +471,6 @@ files = [
 ]
 
 [[package]]
-name = "geojson-pydantic"
-version = "1.0.1"
-description = "Pydantic data models for the GeoJSON spec."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "geojson_pydantic-1.0.1-py3-none-any.whl", hash = "sha256:da8c15f15a0a9fc3e0af0253f0c2bb8a948f95ece9a0356f43d4738fa2be5107"},
-    {file = "geojson_pydantic-1.0.1.tar.gz", hash = "sha256:a996ffccd5a016d3acb4a0c6aac941d2c569e3c6163d5ce6a04b61ee131c8f94"},
-]
-
-[package.dependencies]
-pydantic = ">=2.0,<3.0"
-
-[package.extras]
-dev = ["pre-commit"]
-docs = ["mkdocs", "mkdocs-material", "pygments"]
-test = ["pytest", "pytest-cov", "shapely"]
-
-[[package]]
 name = "h11"
 version = "0.14.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -1130,4 +1111,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "694390a6988d9735bef19a12f1f67ccb7132960f2564c3884e02bd9b0fc38c34"
+content-hash = "d8ce6cc6f99bba01f1b06c2feeabcd4e72d9c8f96c05f07bae5296f15fefd032"
