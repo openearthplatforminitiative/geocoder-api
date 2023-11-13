@@ -18,6 +18,7 @@ app = FastAPI(
     lifespan=lifespan,
     version=settings.version,
     root_path=settings.api_root_path,
+    description=settings.api_description,
 )
 
 app.include_router(geocoding.router)
