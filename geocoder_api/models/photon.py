@@ -58,7 +58,7 @@ PlaceType = (
 
 
 class Properties(BaseModel):
-    name: str = Field(description="Name of the OSM-object")
+    name: str | None = Field(None, description="Name of the OSM-object")
     osm_type: Literal["N"] | Literal["W"] | Literal["R"] = Field(
         description="Whether the OSM object is an OSM node (N), way (W), or relation (R)"
     )
