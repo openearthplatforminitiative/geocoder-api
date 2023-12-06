@@ -24,7 +24,7 @@ async def get_shared_query_params(
     description="Returns a GeoJSON FeatureCollection of places matching the search query",
 )
 @cache(expire=3600)  # Expires after 1 hour
-async def geocode(
+async def get_geocoding(
     q: Annotated[str, Query(description="Search query")],
     shared_params: Annotated[dict, Depends(get_shared_query_params)],
     lat: Annotated[
@@ -53,7 +53,7 @@ async def geocode(
     description="Returns a GeoJSON FeatureCollection of places near the provided coordinate",
 )
 @cache(expire=3600)  # Expires after 1 hour
-async def reverse_geocode(
+async def get_reverse_geocoding(
     lat: Annotated[float, Query(description="Latitude")],
     lon: Annotated[float, Query(description="Longitude")],
     shared_params: Annotated[dict, Depends(get_shared_query_params)],
