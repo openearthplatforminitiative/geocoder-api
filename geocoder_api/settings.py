@@ -16,6 +16,14 @@ class Settings(BaseSettings):
         'by the <a href="https://osmfoundation.org">OpenStreetMap Foundation (OSMF)</a>.</p>'
         '<p>The data is sourced from <a href="https://photon.komoot.io">https://photon.komoot.io</a>.</p>'
     )
+    api_domain: str = "localhost"
+
+    @property
+    def api_url(self):
+        if self.api_domain == "localhost":
+            return f"http://{self.api_domain}:{self.uvicorn_port}"
+        else:
+            return f"https://{self.api_domain}{self.api_root_path}"
 
 
 settings = Settings()
