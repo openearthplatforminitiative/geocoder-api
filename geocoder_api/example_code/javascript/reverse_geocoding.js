@@ -1,5 +1,5 @@
 const response = await fetch(
-  "$api_url$api_path?" + new URLSearchParams({
+  "$endpoint_url?" + new URLSearchParams({
         lon: "13.438596",
         lat: "52.519854"
   })
