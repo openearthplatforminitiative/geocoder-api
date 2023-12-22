@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     uvicorn_reload: bool = True
     uvicorn_proxy_headers: bool = False
     photon_url: str = "https://photon.komoot.io"
-    api_root_path: str = "/"
+    api_root_path: str = ""
     api_description: str = (
         "<p>This is a RESTful service that provides geocoding and reverse geocoding using <a "
         'href="https://www.openstreetmap.org/copyright">OpenStreetMap<sup>®</sup></a> data. The data is licensed under '
