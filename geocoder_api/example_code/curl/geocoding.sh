@@ -1,1 +1,1 @@
-curl -i -X GET $api_url$api_path?q=Berlin
+curl -i -X GET $endpoint_url?q=Berlin

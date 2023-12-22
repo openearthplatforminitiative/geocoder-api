@@ -42,8 +42,7 @@ def custom_openapi(app: FastAPI, example_code_dir: Path):
                         {
                             "lang": lang,
                             "source": code_template.safe_substitute(
-                                api_url=f"{settings.api_url}",
-                                api_path=route.path,
+                                endpoint_url=f"{settings.api_url}{route.path}",
                             ),
                         }
                     )

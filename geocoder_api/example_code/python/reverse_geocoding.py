@@ -2,7 +2,7 @@ from httpx import Client
 
 with Client() as client:
     response = client.get(
-        url="$api_url$api_path", params={"lon": 13.438596, "lat": 52.519854}
+        url="$endpoint_url", params={"lon": 13.438596, "lat": 52.519854}
     )
 
     data = response.json()

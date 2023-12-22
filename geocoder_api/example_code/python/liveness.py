@@ -1,5 +1,5 @@
 from httpx import Client
 
 with Client() as client:
-    response = client.get(url="$api_url$api_path")
+    response = client.get(url="$endpoint_url")
     data = response.json()

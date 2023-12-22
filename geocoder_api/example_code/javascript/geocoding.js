@@ -1,5 +1,5 @@
 const response = await fetch(
-  "$api_url$api_path?" + new URLSearchParams({ q: "Berlin" })
+  "$endpoint_url?" + new URLSearchParams({ q: "Berlin" })
 );
 const data = await response.json();
 

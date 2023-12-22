@@ -1,1 +1,1 @@
-curl -i -X GET $api_url$api_path?lon=13.438596&lat=52.519854
+curl -i -X GET $endpoint_url?lon=13.438596&lat=52.519854
