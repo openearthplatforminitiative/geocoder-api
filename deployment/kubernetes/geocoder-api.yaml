@@ -23,6 +23,11 @@ spec:
               value: "/geocoding"
             - name: VERSION
               value: "0.3.0"
+            - name: API_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: openepi-apps-config
+                  key: api_domain
 ---
 apiVersion: v1
 kind: Service
