@@ -40,23 +40,29 @@ spec:
   selector:
     app: geocoder-api
 ---
-apiVersion: apisix.apache.org/v2
-kind: ApisixRoute
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: stripprefix-geocoding
+spec:
+  stripPrefix:
+    prefixes:
+      - /geocoding
+    forceSlash: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: geocoder-api
 spec:
-  http:
-    - name: geocoder-api
-      match:
-        paths:
-          - /geocoding/*
-      backends:
-        - serviceName: geocoder-api
-          servicePort: 80
-      plugins:
-        - name: proxy-rewrite
-          enable: true
-          config:
-            regex_uri:
-              - "^/geocoding/(.*)"
-              - "/$1"
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/geocoding`)
+    services:
+    - kind: Service
+      name: geocoder-api
+      port: 80
+    middlewares:
+    - name: stripprefix-geocoding
