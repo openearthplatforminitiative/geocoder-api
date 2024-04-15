@@ -8,6 +8,7 @@ from geocoder_api.settings import settings
 from geocoder_api.routers import geocoding, healthcheck
 from geocoder_api.openapi import custom_openapi
 from fastapi.openapi.docs import get_redoc_html
+from prometheus_fastapi_instrumentator import Instrumentator
 
 
 @asynccontextmanager
@@ -27,6 +28,7 @@ app.include_router(healthcheck.router)
 
 example_code_dir = pathlib.Path(__file__).parent / "example_code"
 app.openapi_schema = custom_openapi(app, example_code_dir)
+Instrumentator().instrument(app).expose(app)
 
 
 @app.get("/redoc", include_in_schema=False)
