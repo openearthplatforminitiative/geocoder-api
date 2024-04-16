@@ -12,9 +12,13 @@ spec:
     metadata:
       labels:
         app: geocoder-api
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
-        - image: ghcr.io/openearthplatforminitiative/geocoder-api:0.3.0
+        - image: ghcr.io/openearthplatforminitiative/geocoder-api:0.4.0
           name: geocoder-api
           ports:
             - containerPort: 8080
@@ -22,7 +26,7 @@ spec:
             - name: API_ROOT_PATH
               value: "/geocoding"
             - name: VERSION
-              value: "0.3.0"
+              value: "0.4.0"
             - name: API_DOMAIN
               valueFrom:
                 configMapKeyRef:
@@ -59,7 +63,7 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: PathPrefix(`/geocoding`)
+    match: PathPrefix(`/geocoding`) && !PathPrefix(`/geocoding/metrics`)
     services:
     - kind: Service
       name: geocoder-api
