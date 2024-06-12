@@ -8,6 +8,7 @@ from geocoder_api.settings import settings
 from geocoder_api.routers import geocoding, healthcheck
 from geocoder_api.openapi import custom_openapi
 from fastapi.openapi.docs import get_redoc_html
+from fastapi.staticfiles import StaticFiles
 from prometheus_fastapi_instrumentator import Instrumentator
 
 
@@ -25,6 +26,9 @@ app = FastAPI(
 
 app.include_router(geocoding.router)
 app.include_router(healthcheck.router)
+
+# The OpenEPI logo needs to be served as a static file since it is referenced in the OpenAPI schema
+app.mount("/static", StaticFiles(directory="assets/"), name="static")
 
 example_code_dir = pathlib.Path(__file__).parent / "example_code"
 app.openapi_schema = custom_openapi(app, example_code_dir)
