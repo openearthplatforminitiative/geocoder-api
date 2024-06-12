@@ -28,7 +28,7 @@ app.include_router(geocoding.router)
 app.include_router(healthcheck.router)
 
 # The OpenEPI logo needs to be served as a static file since it is referenced in the OpenAPI schema
-app.mount("/static", StaticFiles(directory="assets/"), name="static")
+app.mount("/static", StaticFiles(directory="geocoder_api/assets/"), name="static")
 
 example_code_dir = pathlib.Path(__file__).parent / "example_code"
 app.openapi_schema = custom_openapi(app, example_code_dir)
