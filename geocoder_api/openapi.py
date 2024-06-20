@@ -21,11 +21,8 @@ def custom_openapi(app: FastAPI, example_code_dir: Path):
         version=settings.version,
         description=settings.api_description,
         routes=app.routes,
+        servers=[{"url": settings.api_url}],
     )
-
-    openapi_schema["info"]["x-logo"] = {
-        "url": "https://api-test.openepi.io/assets/icons/open-epi-logo.svg"
-    }
 
     api_routes = [route for route in app.routes if isinstance(route, APIRoute)]
 
