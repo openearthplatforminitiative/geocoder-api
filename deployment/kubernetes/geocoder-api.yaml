@@ -55,19 +55,6 @@ spec:
     forceSlash: true
 ---
 apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: cors-geocoder
-spec:
-  headers:
-    accessControlAllowMethods:
-      - "GET"
-    accessControlAllowHeaders:
-      - "*"
-    accessControlAllowOriginList:
-      - "*"
----
-apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: geocoder-api
@@ -76,11 +63,24 @@ spec:
     - websecure
   routes:
   - kind: Rule
-    match: PathPrefix(`/geocoding`) && !PathPrefix(`/geocoding/metrics`)
+    match: PathPrefix(`/geocoding`) && !PathPrefix(`/geocoding/metrics`) && HeadersRegexp(`Authorization`, `.+`)
     services:
     - kind: Service
       name: geocoder-api
       port: 80
     middlewares:
     - name: stripprefix-geocoding
-    - name: cors-geocoder
+    - name: traefikmiddleware-cors@kubernetescrd
+    - name: traefikmiddleware-jwt@kubernetescrd
+    - name: traefikmiddleware-rate-limit-registered@kubernetescrd
+  - kind: Rule
+    match: PathPrefix(`/geocoding`) && !PathPrefix(`/geocoding/metrics`) && !HeadersRegexp(`Authorization`, `.+`)
+    services:
+    - kind: Service
+      name: geocoder-api
+      port: 80
+    middlewares:
+    - name: stripprefix-geocoding
+    - name: traefikmiddleware-cors@kubernetescrd
+    - name: traefikmiddleware-rate-limit-anonymous@kubernetescrd
+
