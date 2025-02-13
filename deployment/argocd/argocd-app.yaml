@@ -13,7 +13,7 @@ spec:
   source:
     path: deployment/kubernetes/
     repoURL: https://github.com/openearthplatforminitiative/geocoder-api
-    targetRevision: HEAD
+    targetRevision: adding-rate-limiting
   syncPolicy:
     automated:
       prune: true
