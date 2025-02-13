@@ -54,6 +54,7 @@ PlaceType = (
     | Literal["county"]
     | Literal["state"]
     | Literal["country"]
+    | Literal["other"]
 )
 
 
