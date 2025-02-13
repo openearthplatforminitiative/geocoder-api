@@ -9,7 +9,7 @@ router = APIRouter(tags=["health"])
 
 
 def photon_healthcheck() -> (bool, str):
-    with Client() as client:
+    with Client(timeout=20) as client:
         params = {"q": "berlin"}
         res = client.get(f"{settings.photon_url}/api", params=params)
         if res.status_code == 200:

@@ -34,7 +34,7 @@ async def geocoding(
         float | None, Query(description="Geocode with priority to this longitude")
     ] = None,
 ) -> FeatureCollection:
-    async with AsyncClient() as client:
+    async with AsyncClient(timeout=20) as client:
         # Remove None-parameters
         params = {
             k: v
@@ -58,7 +58,7 @@ async def reverse_geocoding(
     lon: Annotated[float, Query(description="Longitude")],
     shared_params: Annotated[dict, Depends(get_shared_query_params)],
 ) -> FeatureCollection:
-    async with AsyncClient() as client:
+    async with AsyncClient(timeout=20) as client:
         # Remove None-parameters
         params = {
             k: v
